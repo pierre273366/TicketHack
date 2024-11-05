@@ -4,14 +4,41 @@
     <meta charset="utf-8" />
     <title>Home</title>
     <link rel="stylesheet" href="./style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
   </head>
-  <body>
-    <headers>
+  <body id="home">
+    <header>
       <a id="brandName" href="./index.html">Tickethack</a>
-      <a href="./cart.html">Cart</a>
-      <a href="./bookings.html">Booking</a>
-    </headers>
-    <main></main>
+      <div>
+        <a href="./cart.html">Cart</a>
+        <a href="./bookings.html">Booking</a>
+      </div>
+    </header>
+    <main>
+      <h1 class="blanc">Explore the world effortlessly by train!</h1>
+      <p class="blanc">
+        Compare, book and enjoy cheap prices for train tickets: your journey
+        start on Tickethack.
+      </p>
+      <div id="twocards">
+        <div class="card">
+          <input type="text" required placeholder="Departure" />
+          <input type="text" required placeholder="Arrival" />
+          <input type="date" required placeholder="Search" />
+          <button type="button">Search</button>
+        </div>
+        <div class="card">
+          <img class="imgtrain" src="images/train.png" />
+          <hr class="borderTrain" />
+          <p>It's time to book your future trip</p>
+        </div>
+      </div>
+    </main>
     <script src="script.js"></script>
   </body>
 </html>
