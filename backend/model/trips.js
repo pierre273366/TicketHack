@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-require("./connection");
 
 const tripsSchema = mongoose.Schema({
   departure: String,

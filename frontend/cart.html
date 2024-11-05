@@ -11,9 +11,29 @@
       rel="stylesheet"
     />
   </head>
-  <body>
-    <header></header>
-    <main></main>
+  <body id="cart">
+    <header>
+      <a id="brandName" href="./index.html">Tickethack</a>
+      <div>
+        <a href="./cart.html">Cart</a>
+        <a href="./bookings.html">Booking</a>
+      </div>
+    </header>
+    <main id="maincart">
+      <div class="planTrip" style="display: none">
+        <p>No tickets in your cart.<br />Why not plan a trip?</p>
+      </div>
+      <div id="myCart">
+        <div id="entete">
+          <h1>My cart</h1>
+        </div>
+        <div id="panier"></div>
+        <div id="footer">
+          <p>Total:<span id="total"></span>€</p>
+          <button class="purchase" type="button">Purchase</button>
+        </div>
+      </div>
+    </main>
     <script src="script.js"></script>
   </body>
 </html>
