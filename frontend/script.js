@@ -1,8 +1,79 @@
+const URL = "http://localhost:3000";
+
 // ----- Home - Recherche de trips
 // l-> Récupérer les inputs
 // l-> GET dans /trips
 //     l-> Si le départ ou l'arrivée ou la date ne correspondent à rien ça retourne "Aucun voyage trouvé"
 //     l-> Sinon ça va afficher tous les voyages correspondants
+
+function getTrips(departure, arrival, date) {
+  return fetch(`${URL}/trips/`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      departure: departure,
+      arrival: arrival,
+      date: date,
+    }),
+  })
+    .then((res) => res.json())
+    .then((data) => data);
+}
+
+function getInputsValues() {
+  const departure = document.querySelector("#inputDeparture").value;
+  const arrival = document.querySelector("#inputArrival").value;
+  const date = document.querySelector("#inputDate").value;
+  return { departure, arrival, date };
+}
+
+function createTripRow(trip) {
+  const date = new Date(trip.date);
+  const dateHours = date.getHours();
+  const dateMinutes = date.getMinutes();
+  return `
+    <div class="tripList_row">
+        <p>${trip.departure} > ${trip.arrival}</p>
+        <p>${dateHours}:${dateMinutes}</p>
+        <p>${trip.price}€</p>
+        <button class="bookButton button" data-id="${trip._id}">Book</button>
+    </div>
+    `;
+}
+
+function addTripsToList(trips) {
+  const tripList = document.querySelector("#tripsList");
+  tripList.innerHTML = "";
+  for (const trip of trips) {
+    tripList.innerHTML += createTripRow(trip);
+  }
+}
+
+function displayAndHideElements(displayElementId, hideElementIdArr) {
+  const displayElement = document.querySelector(`#${displayElementId}`);
+  displayElement.classList.remove("hidden");
+  for (const hideElementId of hideElementIdArr) {
+    const hideElement = document.querySelector(`#${hideElementId}`);
+    hideElement.classList.add("hidden");
+  }
+}
+
+function searchTrips() {
+  const searchButton = document.querySelector("#searchTrip");
+  searchButton.addEventListener("click", async () => {
+    const { departure, arrival, date } = getInputsValues();
+    const trips = await getTrips(departure, arrival, date);
+    console.log(trips.result);
+    if (trips.result) {
+      displayAndHideElements("tripsList", ["noTripFound", "timeToBook"]);
+      addTripsToList(trips.trips);
+    } else {
+      displayAndHideElements("noTripFound", ["tripsList", "timeToBook"]);
+    }
+  });
+}
+
+searchTrips();
 
 // Un bouton book va permettr d'ajouter le voyage correspondant à la base de donnée Cart, il redirige sur la page cart
 // l-> POST dans /carts => ajoute

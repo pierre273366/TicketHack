@@ -16,15 +16,15 @@ router.post("/", (req, res) => {
   // Je vais chercher tous les trips
   Trip.find().then((trips) => {
     // Je filtre le tableau de trips où les éléments correspondent grâce au modules
-    const tripsByDate = trips.filter(
+    const filterTrips = trips.filter(
       (trip) =>
         compareDates(trip.date, date) &&
         compareStrings(trip.departure, departure) &&
         compareStrings(trip.arrival, arrival)
     );
     // S'il reste des trips je retournes true et j'envoie les trips correspondants
-    if (tripsByDate.length > 0) {
-      return res.json({ result: true, trips: tripsByDate });
+    if (filterTrips.length > 0) {
+      return res.json({ result: true, trips: filterTrips });
     }
     // Sinon je rtourne false
     res.json({ result: false });

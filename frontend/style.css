@@ -1,9 +1,28 @@
+* {
+  box-sizing: border-box;
+}
+
+p,
+button,
+input {
+  font-size: 16px;
+}
+
 body {
   width: 100vw;
   height: 100vh;
   margin: 0;
   padding: 0;
   font-family: "Outfit", sans-serif;
+}
+
+.button {
+  background-color: rgb(79, 168, 144);
+  border: none;
+  color: white;
+  text-align: center;
+  padding: 4px 16px;
+  border-radius: 8px;
 }
 
 #home {
@@ -32,6 +51,10 @@ a {
   color: black;
 }
 
+.hidden {
+  display: none !important;
+}
+
 main {
   height: calc(100% - 60px);
   width: 100%;
@@ -50,12 +73,18 @@ main {
 }
 
 .card {
-  display: flex;
-  flex-direction: column;
   background-color: white;
   border-radius: 8px;
   width: 30%;
   padding: 16px;
+  max-height: 50vh;
+  overflow: scroll;
+}
+
+#searchCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .imgtrain {
@@ -68,44 +97,20 @@ main {
   width: 80%;
 }
 
-#cart {
-  background-color: #f7f1f0;
+#tripsList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
-#maincart {
+.tripList_row {
+  width: 100%;
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap;
   align-items: center;
-}
-
-#myCart {
-  background-color: white;
-  border-radius: 8px;
-  width: 30%;
-  padding: 16px;
-}
-
-#entete {
-  font-size: 8px;
-  padding-bottom: 60px;
-}
-
-#footer {
-  display: flex;
-  height: 10%;
-  background-color: black;
   justify-content: space-between;
-  align-items: center;
-  color: white;
-}
-
-.purchase {
-  background-color: rgb(79, 168, 144);
-}
-
-.planTrip {
-  background-color: white;
+  gap: 4px;
+  background-color: #f7f1f0;
+  padding: 4px 8px;
   border-radius: 8px;
-  width: 30%;
-  padding: 16px;
 }

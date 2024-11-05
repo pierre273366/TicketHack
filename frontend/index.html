@@ -26,16 +26,38 @@
         start on Tickethack.
       </p>
       <div id="twocards">
-        <div class="card">
-          <input type="text" required placeholder="Departure" />
-          <input type="text" required placeholder="Arrival" />
-          <input type="date" required placeholder="Search" />
-          <button type="button">Search</button>
+        <div class="card" id="searchCard">
+          <div>
+            <div>
+              <input
+                type="text"
+                required
+                placeholder="Departure"
+                id="inputDeparture"
+              />
+              <input
+                type="text"
+                required
+                placeholder="Arrival"
+                id="inputArrival"
+              />
+            </div>
+            <input type="date" required placeholder="Search" id="inputDate" />
+          </div>
+          <button type="button" class="button" id="searchTrip">Search</button>
         </div>
         <div class="card">
-          <img class="imgtrain" src="images/train.png" />
-          <hr class="borderTrain" />
-          <p>It's time to book your future trip</p>
+          <div id="timeToBook">
+            <img class="imgtrain" src="images/train.png" />
+            <hr class="borderTrain" />
+            <p>It's time to book your future trip</p>
+          </div>
+          <div id="tripsList" class="hidden"></div>
+          <div id="noTripFound" class="hidden">
+            <img class="imgtrain" src="images/notfound.png" />
+            <hr class="borderTrain" />
+            <p>No trip found.</p>
+          </div>
         </div>
       </div>
     </main>
