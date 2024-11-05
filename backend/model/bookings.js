@@ -2,10 +2,7 @@ const mongoose = require("mongoose");
 require("./connection");
 
 const bookingsSchema = mongoose.Schema({
-  departure: String,
-  arrival: String,
-  date: Date,
-  price: Number,
+  tripId: { type: mongoose.Schema.Types.ObjectId, ref: "trips" },
 });
 
 const Booking = mongoose.model("bookings", bookingsSchema);
