@@ -114,3 +114,45 @@ main {
   padding: 4px 8px;
   border-radius: 8px;
 }
+
+#cart {
+  background-color: #f7f1f0;
+}
+
+#maincart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#myCart {
+  background-color: white;
+  border-radius: 8px;
+  width: 30%;
+  padding: 16px;
+}
+
+#entete {
+  font-size: 8px;
+  padding-bottom: 60px;
+}
+
+#footer {
+  display: flex;
+  height: 10%;
+  background-color: black;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+}
+
+.purchase {
+  background-color: rgb(79, 168, 144);
+}
+
+.planTrip {
+  background-color: white;
+  border-radius: 8px;
+  width: 30%;
+  padding: 16px;
+}
