@@ -2,10 +2,7 @@ const mongoose = require("mongoose");
 require("./connection");
 
 const cartsSchema = mongoose.Schema({
-  departure: String,
-  arrival: String,
-  date: Date,
-  price: Number,
+  tripId: { type: mongoose.Schema.Types.ObjectId, ref: "trips" },
 });
 
 const Cart = mongoose.model("carts", cartsSchema);
