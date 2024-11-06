@@ -63,8 +63,9 @@ header a {
 }
 
 main {
-  height: calc(100% - 60px);
+  min-height: calc(100% - 60px);
   text-align: center;
   position: relative;
   z-index: 50;
+  padding: 24px;
 }
