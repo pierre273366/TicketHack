@@ -30,9 +30,9 @@ function createTripRow(trip) {
   const dateHoursDisplay = dateHours >= 10 ? dateHours : `0${dateHours}`;
   let dateMinutes = date.getMinutes();
   dateMinutes = dateMinutes >= 10 ? dateMinutes : `0${dateMinutes}`;
-
+  const alreadyGoneOpacity = date < new Date() ? "style='opacity: 0.5'" : "";
   return `
-    <div class="tripList_row">
+    <div class="tripList_row" ${alreadyGoneOpacity}>
         <p>${trip.tripId.departure} > ${trip.tripId.arrival}</p>
         <p>${dateHoursDisplay}:${dateMinutes}</p>
         <p>${trip.tripId.price}€</p>

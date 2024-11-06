@@ -13,18 +13,31 @@ router.post("/", (req, res) => {
     return res.json({ result: false });
   }
 
+  const patternDeparture = new RegExp(departure, "i");
+  const patternArrival = new RegExp(arrival, "i");
+
+  let startDate = new Date(date);
+
+  let endDate = new Date(date);
+  endDate.setDate(endDate.getDate() + 1);
+
+  const currentDate = new Date();
+
+  if (compareDates(currentDate, startDate)) {
+    startDate = currentDate;
+  } else if (startDate < currentDate) {
+    return res.json({ result: false });
+  }
+
   // Je vais chercher tous les trips
-  Trip.find().then((trips) => {
-    // Je filtre le tableau de trips où les éléments correspondent grâce au modules
-    const filterTrips = trips.filter(
-      (trip) =>
-        compareDates(trip.date, date) &&
-        compareStrings(trip.departure, departure) &&
-        compareStrings(trip.arrival, arrival)
-    );
+  Trip.find({
+    departure: patternDeparture,
+    arrival: patternArrival,
+    date: { $gte: startDate, $lt: endDate },
+  }).then((trips) => {
     // S'il reste des trips je retournes true et j'envoie les trips correspondants
-    if (filterTrips.length > 0) {
-      return res.json({ result: true, trips: filterTrips });
+    if (trips.length > 0) {
+      return res.json({ result: true, trips: trips });
     }
     // Sinon je rtourne false
     res.json({ result: false });
