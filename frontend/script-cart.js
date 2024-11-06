@@ -9,8 +9,10 @@ function getCartElement() {
 
 function newCartTrip(cart) {
   const date = new Date(cart.tripId.date);
-  const dateHours = date.getHours();
-  const dateMinutes = date.getMinutes();
+  let dateHours = date.getHours();
+  dateHours = dateHours >= 10 ? dateHours : `0${dateHours}`;
+  let dateMinutes = date.getMinutes();
+  dateMinutes = dateMinutes >= 10 ? dateMinutes : `0${dateMinutes}`;
   return `
       <div class="tripList_row">
           <p>${cart.tripId.departure} > ${cart.tripId.arrival}</p>
@@ -33,6 +35,7 @@ function displayTripsToCarts(cartElements) {
 
 function totalCart(cartElements) {
   let price = 0;
+  cartElements = cartElements.sort((a, b) => a.tripId.date - b.tripId.date);
   for (const cartElement of cartElements) {
     const elementPrice = cartElement.tripId.price;
     price += elementPrice;
@@ -40,7 +43,7 @@ function totalCart(cartElements) {
   document.querySelector("#total").textContent = price;
 }
 
-// ----- Delete all cart element
+// ----- Delete cart element
 function deleteCart(cartId) {
   return fetch(`${URL}/carts/delete`, {
     method: "DELETE",

@@ -27,12 +27,14 @@ function departureDelay(dateHours) {
 function createTripRow(trip) {
   const date = new Date(trip.tripId.date);
   const dateHours = date.getHours();
-  const dateMinutes = date.getMinutes();
+  const dateHoursDisplay = dateHours >= 10 ? dateHours : `0${dateHours}`;
+  let dateMinutes = date.getMinutes();
+  dateMinutes = dateMinutes >= 10 ? dateMinutes : `0${dateMinutes}`;
 
   return `
     <div class="tripList_row">
         <p>${trip.tripId.departure} > ${trip.tripId.arrival}</p>
-        <p>${dateHours}:${dateMinutes}</p>
+        <p>${dateHoursDisplay}:${dateMinutes}</p>
         <p>${trip.tripId.price}€</p>
         <p>${departureDelay(dateHours)}</p>
     </div>

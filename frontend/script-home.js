@@ -57,8 +57,10 @@ function getInputsValues() {
 
 function createTripRow(trip) {
   const date = new Date(trip.date);
-  const dateHours = date.getHours();
-  const dateMinutes = date.getMinutes();
+  let dateHours = date.getHours();
+  dateHours = dateHours >= 10 ? dateHours : `0${dateHours}`;
+  let dateMinutes = date.getMinutes();
+  dateMinutes = dateMinutes >= 10 ? dateMinutes : `0${dateMinutes}`;
   return `
     <div class="tripList_row">
         <p>${trip.departure} > ${trip.arrival}</p>
