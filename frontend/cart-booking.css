@@ -114,6 +114,7 @@ main {
   background-color: #f7f1f0;
   padding: 4px 8px;
   border-radius: 8px;
+  margin-bottom: 16px;
 }
 
 #cart {
@@ -130,13 +131,17 @@ main {
 #myCart {
   background-color: white;
   border-radius: 8px;
-  padding: 16px;
   width: 60%;
+  overflow: hidden;
 }
 
 #entete {
   font-size: 8px;
-  padding-bottom: 60px;
+  margin-top: 24px;
+}
+
+#panier {
+  padding: 0 32px;
 }
 
 #footer {
@@ -148,8 +153,13 @@ main {
   color: white;
 }
 
+#tot {
+  margin-left: 20px;
+}
+
 .purchase {
   background-color: rgb(79, 168, 144);
+  margin-right: 20px;
 }
 
 .planTrip {
