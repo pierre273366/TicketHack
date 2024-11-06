@@ -1,5 +1,6 @@
 const URL = "http://localhost:3000";
 
+// ----- Display all cart elements
 function getCartElement() {
   return fetch(`${URL}/carts`)
     .then((response) => response.json())
@@ -20,13 +21,15 @@ function newCartTrip(cart) {
       `;
 }
 
-function addTripsToCarts(cartElements) {
+function displayTripsToCarts(cartElements) {
   const panier = document.querySelector("#panier");
   panier.innerHTML = "";
   for (const cartElement of cartElements) {
     panier.innerHTML += newCartTrip(cartElement);
   }
 }
+
+// ----- Calcul total
 
 function totalCart(cartElements) {
   let price = 0;
@@ -37,6 +40,7 @@ function totalCart(cartElements) {
   document.querySelector("#total").textContent = price;
 }
 
+// ----- Delete all cart element
 function deleteCart(cartId) {
   return fetch(`${URL}/carts/delete`, {
     method: "DELETE",
@@ -63,6 +67,7 @@ function deleteTrip() {
   }
 }
 
+// ----- Display and hide HTML elements
 function displayHideElements(displayElementId, hideElementId) {
   const displayElement = document.querySelector(`#${displayElementId}`);
   const hideElement = document.querySelector(`#${hideElementId}`);
@@ -70,6 +75,7 @@ function displayHideElements(displayElementId, hideElementId) {
   hideElement.classList.add("hidden");
 }
 
+// ----- Add to bookings and delete Cart elements
 function addCartToBooking(tripId) {
   return fetch(`${URL}/bookings/add`, {
     method: "POST",
@@ -82,26 +88,35 @@ function addCartToBooking(tripId) {
     .then((data) => data);
 }
 
-function addToBooking() {
+function deleteAllCartElements() {
+  return fetch(`${URL}/carts/delete-all`, {
+    method: "DELETE",
+  })
+    .then((res) => res.json())
+    .then((data) => data);
+}
+
+function addToBooking(trips) {
   const button = document.querySelector(".purchase");
   button.addEventListener("click", async () => {
-    const tripId = button.dataset.id;
-    const add = await addCartToBooking(tripId);
-    if (add.result === true) {
-      window.location.replace("./bookings.html");
+    for (const trip of trips) {
+      await addCartToBooking(trip.tripId);
     }
+    await deleteAllCartElements();
+    window.location.replace("./bookings.html");
   });
 }
 
+// ----- Call all functions
 async function callCart() {
   const cartElements = await getCartElement();
   console.log(cartElements);
   if (cartElements.result) {
-    addTripsToCarts(cartElements.trips);
+    displayHideElements("myCart", "noCartElement");
+    displayTripsToCarts(cartElements.trips);
     totalCart(cartElements.trips);
     deleteTrip();
-    addToBooking(cartElements);
-    displayHideElements("myCart", "noCartElement");
+    addToBooking(cartElements.trips);
   } else {
     displayHideElements("noCartElement", "myCart");
   }

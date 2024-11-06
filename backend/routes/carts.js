@@ -45,8 +45,9 @@ router.delete("/delete", async (req, res) => {
 });
 
 // Delete all
-router.delete("/deleteAll", (req, res) => {
-  Cart.deleteMany({}).then(() => res.json({ result: true }));
+router.delete("/delete-all", (req, res) => {
+  console.log("route");
+  Cart.deleteMany().then(() => res.json({ result: true }));
 });
 
 module.exports = router;

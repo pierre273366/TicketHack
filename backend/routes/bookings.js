@@ -7,7 +7,7 @@ router.get("/", function (req, res) {
   Booking.find()
     .populate("tripId")
     .then((trips) => {
-      if (trips) {
+      if (trips.length > 0) {
         return res.json({ result: true, trips: trips });
       }
       return res.json({ result: false });
