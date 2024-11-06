@@ -6,20 +6,33 @@ function getBookings() {
     .then((data) => data);
 }
 
-function departureDelay(dateHours) {
+function getDifferences(date, currentDate) {
+  let delta = Math.abs(date - currentDate) / 1000;
+
+  // calculate (and subtract) whole days
+  let days = Math.floor(delta / 86400);
+  delta -= days * 86400;
+
+  // calculate (and subtract) whole hours
+  let hours = Math.floor(delta / 3600) % 24;
+  delta -= hours * 3600;
+
+  // calculate (and subtract) whole minutes
+  let minutes = Math.floor(delta / 60) % 60;
+
+  return { days, hours, minutes };
+}
+
+function departureDelay(date) {
   const currentDate = new Date();
-  const currentHours = currentDate.getHours();
-  const departureInHours = dateHours - currentHours;
-  if (departureInHours > 0) {
-    return `Departure in ${departureInHours} hours`;
+  const { days, hours, minutes } = getDifferences(date, currentDate);
+  if (date > currentDate) {
+    return `Departure in ${days} days ${hours} hours ${minutes} minutes`;
   }
-  if (departureInHours > 0) {
-    return `Departure in ${departureInHours} hours`;
-  }
-  if (departureInHours === 0) {
+  if (days === 0 && hours === 0) {
     return `Leaving now`;
   }
-  if (departureInHours < 0) {
+  if (date < currentDate) {
     return `Already gone`;
   }
 }
@@ -46,7 +59,7 @@ function createTripRow(trip) {
         <p>${dateDay}/${dateMonth}</p>
         <p>${dateHoursDisplay}:${dateMinutes}</p>
         <p>${trip.tripId.price}€</p>
-        <p>${departureDelay(dateHours)}</p>
+        <p>${departureDelay(date)}</p>
     </div>
     `;
 }
