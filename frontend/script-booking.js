@@ -27,13 +27,23 @@ function departureDelay(dateHours) {
 function createTripRow(trip) {
   const date = new Date(trip.tripId.date);
   const dateHours = date.getHours();
-  const dateHoursDisplay = dateHours >= 10 ? dateHours : `0${dateHours}`;
+
+  let dateDay = date.getDate();
+  if (dateDay < 10) {
+    dateDay = `0${dateDay}`;
+  }
+  let dateMonth = date.getMonth();
+  dateMonth = dateMonth < 10 ? `0${dateMonth}` : dateMonth;
+  let dateHoursDisplay = date.getHours();
+  dateHoursDisplay =
+    dateHoursDisplay >= 10 ? dateHoursDisplay : `0${dateHoursDisplay}`;
   let dateMinutes = date.getMinutes();
   dateMinutes = dateMinutes >= 10 ? dateMinutes : `0${dateMinutes}`;
   const alreadyGoneOpacity = date < new Date() ? "style='opacity: 0.5'" : "";
   return `
     <div class="tripList_row" ${alreadyGoneOpacity}>
         <p>${trip.tripId.departure} > ${trip.tripId.arrival}</p>
+        <p>${dateDay}/${dateMonth}</p>
         <p>${dateHoursDisplay}:${dateMinutes}</p>
         <p>${trip.tripId.price}€</p>
         <p>${departureDelay(dateHours)}</p>

@@ -9,6 +9,12 @@ function getCartElement() {
 
 function newCartTrip(cart) {
   const date = new Date(cart.tripId.date);
+  let dateDay = date.getDate();
+  if (dateDay < 10) {
+    dateDay = `0${dateDay}`;
+  }
+  let dateMonth = date.getMonth();
+  dateMonth = dateMonth < 10 ? `0${dateMonth}` : dateMonth;
   let dateHours = date.getHours();
   dateHours = dateHours >= 10 ? dateHours : `0${dateHours}`;
   let dateMinutes = date.getMinutes();
@@ -16,6 +22,7 @@ function newCartTrip(cart) {
   return `
       <div class="tripList_row">
           <p>${cart.tripId.departure} > ${cart.tripId.arrival}</p>
+          <p>${dateDay}/${dateMonth}</p>
           <p>${dateHours}:${dateMinutes}</p>
           <p>${cart.tripId.price}€</p>
           <button class="deleteCart button" data-id="${cart._id}">X</button>

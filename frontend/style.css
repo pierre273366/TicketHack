@@ -25,7 +25,6 @@ body {
   cursor: pointer;
 }
 
-
 /* ----- Header ----- */
 
 header {
@@ -46,8 +45,8 @@ header {
 }
 
 #menu {
-    display: flex;
-    gap: 32px;
+  display: flex;
+  gap: 32px;
 }
 
 #menu a {
@@ -68,4 +67,22 @@ main {
   position: relative;
   z-index: 50;
   padding: 24px;
+}
+
+/* ---- Train animation ----- */
+
+#gif {
+  position: absolute;
+  z-index: 200;
+  bottom: 0;
+  animation: traingif 6s infinite linear;
+}
+
+@keyframes traingif {
+  0% {
+    left: -20%;
+  }
+  100% {
+    left: 120%;
+  }
 }
