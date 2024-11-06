@@ -8,7 +8,7 @@ router.get("/", (req, res) => {
   Cart.find()
     .populate("tripId") // Get informations from Key ID (clé étrangère)
     .then((trips) => {
-      if (trips) {
+      if (trips.length > 0) {
         return res.json({ result: true, trips: trips });
       }
       res.json({ result: false });
