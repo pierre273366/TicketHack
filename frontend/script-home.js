@@ -86,9 +86,15 @@ function displayAndHideElements(displayElementId, hideElementIdArr) {
   }
 }
 
+function playAudio() {
+  const audio = new Audio("./images/old-train-steam-whistle-256872.mp3");
+  audio.play();
+}
+
 function searchTrips() {
   const searchButton = document.querySelector("#searchTrip");
   searchButton.addEventListener("click", async () => {
+    playAudio();
     const { departure, arrival, date } = getInputsValues();
     const trips = await getTrips(departure, arrival, date);
     if (trips.result) {
