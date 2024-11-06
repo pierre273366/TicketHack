@@ -15,16 +15,24 @@
   <body>
     <header>
       <a id="brandName" href="./index.html">Tickethack</a>
-      <div>
+      <div id="menu">
         <a href="./cart.html">Cart</a>
         <a href="./bookings.html">Booking</a>
       </div>
     </header>
     <main id="maincart">
       <div class="planTrip">
-        <p>No booking yet.<br />Why not plan a trip?</p>
+        <div id="cardBooking">
+          <p>No booking yet.<br />Why not plan a trip?</p>
+        </div>
+        <div id="myBookings">
+          <p>My bookings</p>
+          <div id="bookingList"></div>
+          <hr />
+          <p class="greenText">Enjoy your travels with TicketHack</p>
+        </div>
       </div>
     </main>
-    <script src="script.js"></script>
+    <script src="script-booking.js"></script>
   </body>
 </html>

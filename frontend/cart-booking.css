@@ -124,13 +124,14 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #f7f1f0;
 }
 
 #myCart {
   background-color: white;
   border-radius: 8px;
-  width: 30%;
   padding: 16px;
+  width: 60%;
 }
 
 #entete {
@@ -154,6 +155,6 @@ main {
 .planTrip {
   background-color: white;
   border-radius: 8px;
-  width: 30%;
+  width: 60%;
   padding: 16px;
 }
