@@ -9,7 +9,6 @@ input {
 }
 
 body {
-  width: 100vw;
   height: 100vh;
   margin: 0;
   padding: 0;
@@ -23,14 +22,11 @@ body {
   text-align: center;
   padding: 4px 16px;
   border-radius: 8px;
+  cursor: pointer;
 }
 
-#home {
-  background-image: url("images/background.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
+
+/* ----- Header ----- */
 
 header {
   display: flex;
@@ -38,6 +34,9 @@ header {
   align-items: center;
   height: 60px;
   background-color: white;
+  padding: 8px 24px;
+  position: relative;
+  z-index: 100;
 }
 
 #brandName {
@@ -46,9 +45,17 @@ header {
   text-decoration: none;
 }
 
-a {
-  text-decoration: none;
+#menu {
+    display: flex;
+    gap: 32px;
+}
+
+#menu a {
   color: black;
+}
+
+header a {
+  text-decoration: none;
 }
 
 .hidden {
@@ -57,102 +64,7 @@ a {
 
 main {
   height: calc(100% - 60px);
-  width: 100%;
   text-align: center;
-}
-
-.blanc {
-  color: white;
-  padding-top: 10px;
-}
-
-#twocards {
-  display: flex;
-  justify-content: center;
-  gap: 5%;
-}
-
-.card {
-  background-color: white;
-  border-radius: 8px;
-  width: 30%;
-  padding: 16px;
-  max-height: 50vh;
-  overflow: scroll;
-}
-
-#searchCard {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.imgtrain {
-  width: 100px;
-  margin: auto;
-}
-
-.borderTrain {
-  border: 1px solid green;
-  width: 80%;
-}
-
-#tripsList {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.tripList_row {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 4px;
-  background-color: #f7f1f0;
-  padding: 4px 8px;
-  border-radius: 8px;
-}
-
-#cart {
-  background-color: #f7f1f0;
-}
-
-#maincart {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-#myCart {
-  background-color: white;
-  border-radius: 8px;
-  width: 30%;
-  padding: 16px;
-}
-
-#entete {
-  font-size: 8px;
-  padding-bottom: 60px;
-}
-
-#footer {
-  display: flex;
-  height: 10%;
-  background-color: black;
-  justify-content: space-between;
-  align-items: center;
-  color: white;
-}
-
-.purchase {
-  background-color: rgb(79, 168, 144);
-}
-
-.planTrip {
-  background-color: white;
-  border-radius: 8px;
-  width: 30%;
-  padding: 16px;
+  position: relative;
+  z-index: 50;
 }

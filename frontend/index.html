@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <title>Home</title>
     <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./home.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -14,36 +15,34 @@
   <body id="home">
     <header>
       <a id="brandName" href="./index.html">Tickethack</a>
-      <div>
+      <div id="menu">
         <a href="./cart.html">Cart</a>
         <a href="./bookings.html">Booking</a>
       </div>
     </header>
     <main>
-      <h1 class="blanc">Explore the world effortlessly by train!</h1>
-      <p class="blanc">
+      <h1 id="homeTitle">Explore the world effortlessly by train!</h1>
+      <p id="homeDescription">
         Compare, book and enjoy cheap prices for train tickets: your journey
         start on Tickethack.
       </p>
       <div id="twocards">
         <div class="card" id="searchCard">
-          <div>
-            <div>
-              <input
-                type="text"
-                required
-                placeholder="Departure"
-                id="inputDeparture"
-              />
-              <input
-                type="text"
-                required
-                placeholder="Arrival"
-                id="inputArrival"
-              />
-            </div>
-            <input type="date" required placeholder="Search" id="inputDate" />
+          <div id="searchCard_depart-arrival">
+            <input
+              type="text"
+              required
+              placeholder="Departure"
+              id="inputDeparture"
+            />
+            <input
+              type="text"
+              required
+              placeholder="Arrival"
+              id="inputArrival"
+            />
           </div>
+          <input type="date" required placeholder="Search" id="inputDate" />
           <button type="button" class="button" id="searchTrip">Search</button>
         </div>
         <div class="card">

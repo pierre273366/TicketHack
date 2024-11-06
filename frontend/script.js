@@ -1,11 +1,5 @@
 const URL = "http://localhost:3000";
 
-// ----- Home - Recherche de trips
-// l-> Récupérer les inputs
-// l-> GET dans /trips
-//     l-> Si le départ ou l'arrivée ou la date ne correspondent à rien ça retourne "Aucun voyage trouvé"
-//     l-> Sinon ça va afficher tous les voyages correspondants
-
 function getTrips(departure, arrival, date) {
   return fetch(`${URL}/trips/`, {
     method: "POST",
