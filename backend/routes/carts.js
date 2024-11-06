@@ -16,10 +16,13 @@ router.get("/", (req, res) => {
 });
 
 // Add cart element
-router.post("/add", (req, res) => {
+router.post("/add", async (req, res) => {
   const tripId = req.body.tripId;
+  const isTrip = await Trip.findById(tripId).then((data) =>
+    data ? true : false
+  );
   // Check if id exist
-  if (Trip.findById(tripId)) {
+  if (isTrip) {
     const newCartTrip = new Cart({
       tripId: tripId,
     });
